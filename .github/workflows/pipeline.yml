@@ -1,0 +1,32 @@
+name: Data Pipeline
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Run data validation tests
+        run: |
+          pytest tests/test_validation.py -v
+      - name: Run ETL tests
+        run: |
+          pytest tests/test_etl.py -v --timeout=300
+      - name: Check data quality
+        run: |
+          python scripts/data_quality_check.py
