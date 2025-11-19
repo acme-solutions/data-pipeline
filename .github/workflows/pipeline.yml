@@ -1,3 +1,4 @@
+# This workflow will fail intentionally to simulate flaky CI
 name: Data Pipeline
 
 on:
@@ -27,6 +28,9 @@ jobs:
       - name: Run ETL tests
         run: |
           pytest tests/test_etl.py -v --timeout=300
+      - name: Flaky test that sometimes fails
+        run: |
+          python -c "import random; exit(0 if random.random() > 0.3 else 1)"
       - name: Check data quality
         run: |
           python scripts/data_quality_check.py
