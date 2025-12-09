@@ -1,0 +1,39 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment: production
+    concurrency:
+      group: production
+      cancel-in-progress: true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js (dummy example)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Print deployment info
+        run: |
+          echo "Starting deployment to production environment..."
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Actor: ${{ github.actor }}"
+
+      - name: Dummy deployment step
+        run: |
+          echo "Simulating deployment..."
+          sleep 5
+          echo "Deployment completed successfully!"
+
+      - name: Notify success
+        run: |
+          echo "✅ Deployment finished for commit ${{ github.sha }}"
