@@ -1,4 +1,4 @@
-pandas==2.1.3
+pandas==2.1.333
 numpy==1.26.2
 apache-airflow==2.7.3
 sqlalchemy==2.0.23
