@@ -1,2 +1,2 @@
-#### data-etl-service
+##### data-etl-service
 Data pipeline service - demonstrates CI/CD pain: long-running workflows, frequent failures
