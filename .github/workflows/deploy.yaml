@@ -7,14 +7,14 @@ on:
 
 jobs:
   deploymentt:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latestt
     environment: production
     concurrency:
       group: production
       cancel-in-progress: true
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout repositoryc
+        uses: actions/checkout@v3c
 
       - name: Set up Node.js (dummy example)
         uses: actions/setup-node@v3
