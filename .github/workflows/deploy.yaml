@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deployment:
+  deploymentt:
     runs-on: ubuntu-latest
     environment: production
     concurrency:
