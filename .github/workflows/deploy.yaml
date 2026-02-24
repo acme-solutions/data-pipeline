@@ -6,15 +6,15 @@ on:
       - main
 
 jobs:
-  deploymentt:
-    runs-on: ubuntu-latestt
+  deployment:
+    runs-on: ubuntu-latest
     environment: production
     concurrency:
       group: production
       cancel-in-progress: true
     steps:
-      - name: Checkout repositoryc
-        uses: actions/checkout@v3c
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Set up Node.js (dummy example)
         uses: actions/setup-node@v3
@@ -33,6 +33,11 @@ jobs:
           echo "Simulating deployment..."
           sleep 5
           echo "Deployment completed successfully!"
+          
+      - name: Run deployment checks
+        run: |
+          echo "ERROR: Deployment health check failed"
+          exit 1
 
       - name: Notify success
         run: |
