@@ -1,4 +1,4 @@
-##### data-etl-service
+##### data-etl-servicee
 Data pipeline service - demonstrates CI/CD pain: long-running workflows, frequent failures
 
 <!-- build trigger 3 -->
